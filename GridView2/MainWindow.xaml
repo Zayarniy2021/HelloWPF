@@ -1,0 +1,41 @@
+﻿<Window x:Class="GridView2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GridView2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+<!--
+Контрол ListView, который является наследником ListBox, выглядит и работает так же, как и ListBox, за исключением того,
+что он использует по умолчанию ExtendedSelectionMode. Кроме этого, ListView содержит свойство View, которое дает значительно 
+больше возможностей по построению многофункциональных списковых представлений, чем ItemsPanel.       
+ 
+    Использование свойства DisplayMemberBinding не позволяет производить форматирование отображаемых свойств.
+Но это ограничение можно обойти, определив свойство CellTemplate. C его помощью достигается полный контроль 
+над содержимым ячейки ListView.    
+-->    
+    <Grid>
+        <ListView Margin="10" Name="lvEmployee">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" Foreground="Green" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Возраст" Width="50" DisplayMemberBinding="{Binding Age}" />
+                    <GridViewColumn Header="Зарплата" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Salary}" Foreground="Blue" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

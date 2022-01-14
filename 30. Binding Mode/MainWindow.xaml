@@ -1,0 +1,28 @@
+﻿<Window x:Class="_30.Binding_Mode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_30.Binding_Mode"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Margin="10">
+        <TextBox Name="tbText" />
+        <TextBlock Text="Текст: " FontWeight="Bold" />
+        <!--объект привязки-->
+        <!--источник привязки (имя)-->
+        <!-- свойство привязки-->
+        <TextBlock Text="{Binding ElementName=tbText,Path=Text, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+        <Button>Button</Button>
+        <!--целевой объект привязки-->
+<!--
+Свойство Mode объекта Binding, которое представляет режим привязки, может принимать следующие значения:
+●	OneWay – используется, если связанное свойство изменяет значения в пользовательском интерфейсе;
+●	OneWayToSource – противоположность OneWay. Изменения значения в пользовательском интерфейсе изменяют связанное свойство;
+●	OneTime – аналогично поведению OneWay, за исключением того, что изменение в пользовательском интерфейсе происходит один раз(нужно самим управлять изменениями);
+●	TwoWay – комбинация OneWay и OneWayToSource. Связанное свойство изменяет пользовательский интерфейс, и изменения в пользовательском интерфейсе модифицируют связанное свойство;
+●	Default – по умолчанию (если меняется свойство TextBox.Text, то имеет значение TwoWay, в остальных случаях – OneWay).        
+-->        
+    </StackPanel>
+
+</Window>

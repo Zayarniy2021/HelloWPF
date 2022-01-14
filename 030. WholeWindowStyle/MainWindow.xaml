@@ -1,0 +1,29 @@
+﻿<Window x:Class="_030.WholeWindowStyle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_030.WholeWindowStyle"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!--Определяем ресурс на уровне окна-->
+    <!--Стиль будет действовать для всех TextBlock в этом окне-->
+        <Window.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontSize" Value="40" />
+            </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="40" />
+        </Style>
+
+    </Window.Resources>
+    
+    
+        <StackPanel Margin="10">
+            <TextBlock>Заголовок 1</TextBlock>
+            <TextBlock Foreground="Blue">Заголовок 2</TextBlock>
+        <Label>Здесь метка</Label>
+        </StackPanel>
+    </Window>

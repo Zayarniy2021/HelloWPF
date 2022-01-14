@@ -1,0 +1,89 @@
+﻿<Window x:Class="SelectedValue_and_SelectedItem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fun with selections" Height="450" Width="400"
+		Name="SelectionFun"
+		>
+	<Window.Resources>
+		<!-- Used in order to have consistent borders: -->
+		<Style TargetType="Border">
+			<Setter Property="BorderBrush"     Value="Black" />
+			<Setter Property="BorderThickness" Value="1"     />
+			<Setter Property="Margin"          Value="3"     />
+			<Setter Property="Padding"         Value="3"     />
+			<Setter Property="CornerRadius"    Value="5"     />
+		</Style>
+	</Window.Resources>
+	
+	<DockPanel Name="LayoutRoot" Background="Lavender" >
+		
+		<DockPanel Name="Footer" DockPanel.Dock="Bottom" >
+			<TextBlock  DockPanel.Dock="Left" >           
+				<Hyperlink NavigateUri="http://www.codeproject.com/Articles/671544/Understanding-SelectedValue-SelectedValuePath-Sele" RequestNavigate="Hyperlink_RequestNavigate">
+					Code project article
+				</Hyperlink>
+			</TextBlock>
+			<TextBlock  HorizontalAlignment="right" Foreground="Navy"> _Noctis_ </TextBlock>
+		</DockPanel>
+	
+		<StackPanel >
+			<Border Name="ShapeCollectionArea">
+				<StackPanel>
+					<Label FontWeight="Bold" >Our shapes collection:</Label>
+					<ListBox Name="SourceListBox"  
+							 ItemsSource="{ Binding ElementName=SelectionFun, Path=ShapeCollection}" />
+				</StackPanel>
+			</Border>
+
+			<Border Name="ComboBoxesAndValueArea">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"></ColumnDefinition>
+							<ColumnDefinition></ColumnDefinition>
+							<ColumnDefinition Width="30"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+					</Grid.RowDefinitions>
+
+					<Label		Grid.Row="0" Grid.Column="0" >DisplayMemberPath:</Label>
+					<ComboBox	Grid.Row="0" Grid.Column="1" 
+								ItemsSource="{ Binding  ElementName=SelectionFun, Path=PropertiesList}" 
+								SelectionChanged="DisplayMemberPathCmbx_SelectionChanged" 
+								Background="Lavender"/>
+
+					<Label		Grid.Row="1" Grid.Column="0" >SelectedValuePath:</Label>
+					<ComboBox	Grid.Row="1" Grid.Column="1"  
+								ItemsSource="{ Binding  ElementName=SelectionFun, Path=PropertiesList}" 
+								SelectionChanged="ShapeClassPropertiesCmbx_SelectionChanged" 
+								Background="Lavender"/>
+					
+					<!-- Fixed Labels -->
+					<Label Grid.Row="2" HorizontalAlignment="Right" >SelectedItem: </Label>
+					<Label Grid.Row="3" HorizontalAlignment="Right" >SelectedValue:</Label>
+					<Label Grid.Row="4" HorizontalAlignment="Right" >SelectedIndex:</Label>
+				
+					<!-- Changing variables -->
+					<Label Grid.Row="2" Grid.Column="1"  Content="{Binding ElementName=SourceListBox, Path=SelectedItem}"  Foreground="Red" ></Label>
+					<Label Grid.Row="3" Grid.Column="1"  Content="{Binding ElementName=SourceListBox, Path=SelectedValue}"  Foreground="Red" ></Label>
+					<Label Grid.Row="4"  Grid.Column="1"  Content="{Binding ElementName=SourceListBox, Path=SelectedIndex}"  Foreground="Red" ></Label>
+
+					<!-- Binds on selected item color -->
+					<Border Grid.Row="0" Grid.RowSpan="5" Grid.Column="2" >
+						<Label
+							   Background="{Binding ElementName=SourceListBox, Path=SelectedItem.ShapeColor}"
+							   BorderThickness="1" BorderBrush="SteelBlue" Margin="2"
+							   >
+						
+						</Label>
+					</Border>
+				</Grid>
+			</Border>
+
+		</StackPanel>
+	</DockPanel>
+</Window>

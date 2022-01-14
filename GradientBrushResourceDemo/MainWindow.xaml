@@ -1,0 +1,29 @@
+﻿<Window x:Class="GradientBrushResourceDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GradientBrushResourceDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <TextBlock Margin="{StaticResource thicknessMargin}" Foreground="{StaticResource BrushGradient}">
+            Gradient text
+        </TextBlock>
+        <TextBlock Margin="{StaticResource thicknessMargin}" Foreground="{StaticResource BrushGradient}">
+            Of black, green, and gold
+        </TextBlock>
+        <TextBlock Margin="{StaticResource thicknessMargin}"
+                   Foreground="{StaticResource BrushGradient}">
+                Makes an app pretty.
+        </TextBlock>
+        <TextBlock Margin="{StaticResource thicknessMargin}"
+                   Foreground="{StaticResource BrushGradient}">
+                Makes an app bold.
+        </TextBlock>
+        
+    </StackPanel>
+    <Window.Resources>
+        
+    </Window.Resources>
+</Window>

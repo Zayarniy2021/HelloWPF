@@ -1,0 +1,22 @@
+﻿<Window x:Class="CheckBoxValueConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:l="clr-namespace:CheckBoxValueConverter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <l:YesNoToBooleanConverter x:Key="YesNo" />
+    </Window.Resources>
+    <StackPanel Margin="10">
+        <TextBox Name="tbText" /><!--Source-->
+        <WrapPanel Margin="0,10">
+            <TextBlock Text="Текущее значение: " />
+            <!--Использование свойства Converter -->
+            <TextBlock Text="{Binding ElementName=tbText, Path=Text,Mode=OneWay}"></TextBlock>
+        </WrapPanel>
+        <CheckBox IsChecked="{Binding ElementName=tbText, Path=Text, Converter={StaticResource YesNo}}" Content="Yes"  x:Name="cbTarget" IsThreeState="True"/>
+    </StackPanel>
+
+</Window>

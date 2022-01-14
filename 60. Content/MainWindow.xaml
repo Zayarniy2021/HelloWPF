@@ -1,0 +1,29 @@
+﻿<Window x:Class="_60.Content.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_60.Content"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Button>
+            <Button.ToolTip><!--можно как атрибут-->
+                <StackPanel>
+                <Image Source="fon.jpg" Width="100"></Image>
+                    <TextBlock>Текст</TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0">Эта картинка</TextBox>
+                <Image Grid.Row="1" Source="fon.jpg" Width="100"/>
+                <TextBox Grid.Row="2">в кнопке</TextBox>
+            </Grid>
+        </Button>
+    </StackPanel>
+</Window>

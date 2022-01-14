@@ -1,0 +1,59 @@
+﻿<!--
+Ресурс может использоваться как статический или динамический ресурс. 
+ Ссылки создаются с помощью расширения разметки StaticResource или расширения разметки 
+DynamicResource. 
+    Расширение разметки — это функция XAML, с помощью которой можно задать ссылку на объект 
+    путем обработки строки атрибута расширением разметки и возврата объекта загрузчику XAML. 
+    Дополнительные сведения о поведении расширения разметки и WPF XAML см. в этой статье.
+При использовании расширения разметки обычно предоставляют один или несколько параметров 
+    в виде строки. Они обрабатываются этим расширением разметки. 
+    Расширение разметки StaticResource обрабатывает ключ путем поиска для него значения во 
+    всех доступных словарях ресурсов. Обработка происходит во время загрузки, когда для процесса загрузки необходимо присвоить значение свойства. Вместо этого расширение разметки DynamicResource обрабатывает ключ путем создания выражения, которое остается необработанным до тех пор, пока приложение не будет запущено. В этот момент выражение вычисляется и получается значение.   
+https://docs.microsoft.com/ru-ru/dotnet/desktop-wpf/fundamentals/xaml-resources-define    
+    -->
+<Window x:Class="_55.HelloStaticAndDynamicResources.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"        
+        xmlns:l="clr-namespace:_55.HelloStaticAndDynamicResources"
+        xmlns:l2="clr-namespace:_55.HelloStaticAndDynamicResources"
+        mc:Ignorable="d"
+        Height="174.889" 
+        Width="298.742"
+        Title="Ресурсы"
+        Background="{DynamicResource WindowBackgroundBrush}">
+    <Window.Resources>
+        <sys:String x:Key="ComboBoxTitle">Список:</sys:String>
+        <x:Array x:Key="ComboBoxItems" Type="sys:String">
+            <sys:String>Элемент #1</sys:String>
+            <sys:String>Элемент #2</sys:String>
+            <sys:String>Элемент #3</sys:String>
+        </x:Array>
+        <LinearGradientBrush x:Key="WindowBackgroundBrush">
+            <GradientStop Offset="0" Color="Black"/>
+            <GradientStop Offset="1" Color="White"/>
+        </LinearGradientBrush>
+        
+        <l:MyClass x:Key="myClass">
+            <l:MyClass.Str1>
+                <sys:String>Строка 2</sys:String>
+            </l:MyClass.Str1>
+        </l:MyClass>
+        
+        <l:SuperClass x:Key="superClass">
+            <l:SuperClass.Str1>
+                <sys:String>Строка 3</sys:String>
+            </l:SuperClass.Str1>
+        </l:SuperClass>
+        
+    </Window.Resources>
+    <StackPanel Margin="10">
+        <Label Content="{StaticResource ComboBoxTitle}" />
+        <ComboBox ItemsSource="{StaticResource ComboBoxItems}" />
+        <Label Content="{StaticResource ResourceKey=myClass}"/>
+        <Label Content="{DynamicResource ResourceKey=superClass}" Foreground="AliceBlue"/>
+    </StackPanel>
+
+</Window>

@@ -1,0 +1,17 @@
+﻿<Application x:Class="_57.LocalAndApplicationResources.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:_57.LocalAndApplicationResources"             
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="View/MainWindow.xaml">
+    <!--Важно подкючить пространство имен:
+    
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    
+    -->
+    <Application.Resources>
+        <sys:String x:Key="ComboBoxTitle">Список!!!!:</sys:String>
+        <sys:Double x:Key="varPi">3.1415</sys:Double>
+    </Application.Resources>
+
+</Application>

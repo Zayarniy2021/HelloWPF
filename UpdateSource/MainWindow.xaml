@@ -1,0 +1,29 @@
+﻿<Window x:Class="UpdateSource.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UpdateSource"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+  <!--UpdateSourceTrigger в качестве значения принимает одно из значений перечисления UpdateSourceTrigger:
+●	PropertyChanged – после обновления свойства в целевом объекте сразу обновляется источник привязки;
+●	LostFocus – только после потери фокуса целевым объектом обновляется источник привязки;
+●	Explicit – до тех пор, пока не будет вызван метод BindingExpression.UpdateSource(), источник не обновляется;
+●	Default – значение по умолчанию. Для большинства свойств зависимостей – это PropertyChanged, 
+    а свойство Text имеет значение по умолчанию LostFocus.
+-->    
+    <StackPanel Margin="15">
+        <WrapPanel>
+            <TextBlock Text="Заголовок:  " />
+            <TextBox Name="txtWindowTitle" Text="{Binding Title, UpdateSourceTrigger=LostFocus}" Width="150" LostFocus="TxtWindowTitle_LostFocus" />
+            <Button Name="btnUpdateSource" Click="btnUpdateSource_Click" Margin="5,0" Padding="5,0">Изменить</Button>
+        </WrapPanel>
+        <WrapPanel Margin="0,10,0,0">
+            <TextBlock Text="Размеры: " />
+            <TextBox Text="{Binding Width, UpdateSourceTrigger=Explicit}" Width="50" />
+            <TextBlock Text=" x " />
+            <TextBox Text="{Binding Height, UpdateSourceTrigger=Explicit}" Width="50" LostFocus="TextBox_LostFocus" />
+        </WrapPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,25 @@
+﻿<Window x:Class="_60.AccessToResourcesFromCode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:_60.AccessToResourcesFromCode"        
+        mc:Ignorable="d"
+        Height="160" 
+        Width="300"
+        Title="Ресурсы">
+    <Window.Resources>
+        <sys:String x:Key="strWindow">Hello, from Window!</sys:String>
+    </Window.Resources>
+    <DockPanel Margin="10" x:Name="pnlMain">
+        <DockPanel.Resources>
+            <sys:String x:Key="strPanel">Hello, from Panel!</sys:String>
+        </DockPanel.Resources>
+        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="10">
+            <Button Name="btnClickMe" Click="btnClickMe_Click">Click me!</Button>
+        </WrapPanel>
+        <ListBox Name="lbResult" />
+    </DockPanel>
+
+</Window>

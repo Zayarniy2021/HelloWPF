@@ -1,0 +1,23 @@
+﻿<Window x:Class="_020.BindingParams.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_020.BindingParams"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400" x:Name="MainWind" >
+    <StackPanel>
+        <!--FallbackValue=none-->
+        <Label Content="{Binding Width2,ElementName=MainWind, FallbackValue='Property does not exists'}"/>
+        <!--TargetNullValue=empty-->
+        <Label Content="{Binding ContextMenu, ElementName=MainWind, TargetNullValue=empty}" />
+        <!--Path=Width - it's the same -->
+        <Label Content="{Binding Path=Width, ElementName=MainWind, TargetNullValue=empty, Delay=10000}" />
+        <!--Delay= time in ms  -->
+        <Label>Source</Label>
+        <TextBox Name="tbSource"/><!--Source-->
+        <Label>Target</Label>
+        <TextBox Name="tbTarget" Text="{Binding Text, ElementName=tbSource, Delay=2000, Mode=OneWay}"/><!--Target-->
+
+    </StackPanel>
+</Window>

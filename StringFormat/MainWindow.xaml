@@ -1,0 +1,24 @@
+﻿<Window x:Class="StringFormat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StringFormat"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <!--Строчку форматирования можно задать с помощью строки ресурсов-->
+    <Window.Resources>
+        <sys:String x:Key="StrFormat">Зарплата {0} рублей</sys:String>
+    </Window.Resources>
+
+
+    <Grid>
+        <!--Использование свойства Strting Format-->
+        <TextBlock Text="{Binding StringFormat=Зарплата {0} рублей, ElementName=tbSalary, Path=Text}" Padding="20,0"/>
+        <!--Использование свойства Strting Format-->
+        <TextBlock Text="{Binding StringFormat={StaticResource StrFormat}, ElementName=tbSalary, Path=Text}" Padding="20,80">
+        </TextBlock>
+        <TextBox Name="tbSalary" Text="1000" HorizontalAlignment="Left" Height="23" Margin="22,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="285"/>
+    </Grid>
+</Window>
